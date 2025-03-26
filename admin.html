@@ -7,6 +7,17 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div id="pincodePopup" class="popup">
+        <div class="popup-content">
+            <h2>Voer pincode in</h2>
+            <input type="password" id="popupPincodeInput" placeholder="Pincode">
+            <div class="popup-buttons">
+                <button id="confirmPopupButton">Bevestigen</button>
+                <button id="cancelPopupButton">Annuleren</button>
+            </div>
+        </div>
+    </div>
+    
     <div id="container">
         <header>
             <h1>Admin Paneel</h1>
@@ -23,7 +34,7 @@
                 </div>
                 
                 <div class="form-section">
-                    <h2>Voeg drankje toe</h2>
+                    <h2>Voeg product toe</h2>
                     <form id="addDrinkForm">
                         <input type="text" id="drinkName" placeholder="Naam van drankje" required>
                         <input type="number" id="drinkAmount" placeholder="Kosten van drankje" step="0.01" required>
@@ -40,17 +51,10 @@
                     <h2>Verwijder drankje</h2>
                     <ul id="drankjesToRemove"></ul>
                 </div>
-
-                <div id="pincodeContainer" class="pincode-section" style="display:none;">
-                    <input type="password" id="pincodeInput" placeholder="Voer pincode in" required>
-                    <button id="confirmRemovalButton">Bevestiging</button>
-                </div>
             </section>
         </main>
+        <footer id="totalAmountFooter">Totaal opstaand bedrag: €0.00</footer>
     </div>
-    <footer>
-        <p>&copy; 2024 Jouw Bedrijfsnaam. Alle rechten voorbehouden.</p>
-    </footer>
     <script src="admin.js"></script>
 </body>
 </html>

@@ -7,41 +7,37 @@ document.addEventListener('DOMContentLoaded', () => {
     const drinkAmountInput = document.getElementById('drinkAmount');
     const ledenToRemove = document.getElementById('ledenToRemove');
     const drankjesToRemove = document.getElementById('drankjesToRemove');
-    const pincodeContainer = document.getElementById('pincodeContainer');
-    const pincodeInput = document.getElementById('pincodeInput');
-    const confirmRemovalButton = document.getElementById('confirmRemovalButton');
 
-    const CORRECT_PINCODE = '1234'; // Stel hier je gewenste pincode in
+    const pincodePopup = document.getElementById('pincodePopup');
+    const popupPincodeInput = document.getElementById('popupPincodeInput');
+    const confirmPopupButton = document.getElementById('confirmPopupButton');
+    const cancelPopupButton = document.getElementById('cancelPopupButton');
 
-    // Ga terug naar de ledenlijst pagina
+    const CORRECT_PINCODE = '1234';
+    let currentType, currentName;
+
     backButton.addEventListener('click', () => {
         window.location.href = 'index.html';
     });
 
-    // Voeg een nieuw lid toe
     addMemberForm.addEventListener('submit', (e) => {
-        e.preventDefault(); // Voorkom het standaardformulier gedrag
-
+        e.preventDefault();
         const memberName = memberNameInput.value.trim();
-
         if (memberName) {
             const leden = JSON.parse(localStorage.getItem('leden')) || [];
-            leden.push({ name: memberName, amount: 0 }); // Voeg het lid toe met standaard bedrag 0
+            leden.push({ name: memberName, amount: 0 });
             localStorage.setItem('leden', JSON.stringify(leden));
 
             alert('Lid toegevoegd!');
             memberNameInput.value = '';
-            memberNameInput.focus();
-            loadLedenToRemove(); // Herlaad de lijst van leden om de nieuwe te tonen
+            loadLedenToRemove();
         } else {
             alert('Voer een geldige naam in.');
         }
     });
 
-    // Voeg een nieuw drankje toe
     addDrinkForm.addEventListener('submit', (e) => {
-        e.preventDefault(); // Voorkom het standaardformulier gedrag
-
+        e.preventDefault();
         const drinkName = drinkNameInput.value.trim();
         const drinkAmount = parseFloat(drinkAmountInput.value.trim());
 
@@ -53,84 +49,119 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Drankje toegevoegd!');
             drinkNameInput.value = '';
             drinkAmountInput.value = '';
-            drinkNameInput.focus();
-            loadDrankjesToRemove(); // Herlaad de lijst van drankjes om de nieuwe te tonen
+            loadDrankjesToRemove();
         } else {
             alert('Voer een geldige naam en bedrag in.');
         }
     });
 
-    // Toon het pincode invoerveld en bevestigingsknop
     window.promptForPincode = function(type, name) {
-        pincodeContainer.style.display = 'block'; // Toon het pincode invoerveld
-
-        confirmRemovalButton.onclick = () => {
-            const enteredPincode = pincodeInput.value.trim();
-            if (enteredPincode === CORRECT_PINCODE) {
-                if (type === 'lid') {
-                    removeLid(name); // Verwijder het lid als de pincode correct is
-                } else if (type === 'drankje') {
-                    removeDrink(name); // Verwijder het drankje als de pincode correct is
-                }
-                pincodeContainer.style.display = 'none'; // Verberg het pincode invoerveld
-                pincodeInput.value = ''; // Maak het invoerveld leeg
-            } else {
-                alert('Onjuiste pincode. Probeer het opnieuw.');
-            }
-        };
+        currentType = type;
+        currentName = name;
+        pincodePopup.style.display = 'block';
+        popupPincodeInput.value = '';
+        popupPincodeInput.focus();
     };
 
-    // Verwijder een lid
+    confirmPopupButton.addEventListener('click', () => {
+        if (popupPincodeInput.value.trim() === CORRECT_PINCODE) {
+            if (currentType === 'lid') removeLid(currentName);
+            else if (currentType === 'drankje') removeDrink(currentName);
+            pincodePopup.style.display = 'none';
+        } else {
+            alert('Onjuiste pincode. Probeer het opnieuw.');
+            popupPincodeInput.value = '';
+        }
+    });
+
+    cancelPopupButton.addEventListener('click', () => {
+        pincodePopup.style.display = 'none';
+    });
+
     function removeLid(name) {
         let leden = JSON.parse(localStorage.getItem('leden')) || [];
         leden = leden.filter(member => member.name !== name);
         localStorage.setItem('leden', JSON.stringify(leden));
-        loadLedenToRemove(); // Herlaad de lijst van leden na verwijdering
+        loadLedenToRemove();
         alert('Lid verwijderd!');
     }
 
-    // Verwijder een drankje
     function removeDrink(name) {
         let drankjes = JSON.parse(localStorage.getItem('drankjes')) || [];
         drankjes = drankjes.filter(drink => drink.name !== name);
         localStorage.setItem('drankjes', JSON.stringify(drankjes));
-        loadDrankjesToRemove(); // Herlaad de lijst van drankjes na verwijdering
+        loadDrankjesToRemove();
         alert('Item verwijderd!');
     }
 
-    // Laad ledenlijst voor verwijdering
     function loadLedenToRemove() {
-        ledenToRemove.innerHTML = ''; // Maak de lijst leeg
+        ledenToRemove.innerHTML = '';
         const leden = JSON.parse(localStorage.getItem('leden')) || [];
         leden.forEach(member => {
-            if (member.name && member.amount !== undefined && member.amount !== null) {
-                const li = document.createElement('li');
-                li.innerHTML = `
-                    ${member.name} - €${parseFloat(member.amount).toFixed(2)}
-                    <button onclick="promptForPincode('lid', '${member.name}')">Verwijder</button>
-                `;
-                ledenToRemove.appendChild(li);
-            }
+            const li = document.createElement('li');
+            li.innerHTML = `
+                ${member.name} - €${parseFloat(member.amount).toFixed(2)}
+                <button onclick="promptForPincode('lid', '${member.name}')">Verwijder</button>
+            `;
+            ledenToRemove.appendChild(li);
         });
     }
 
-    // Laad drankjeslijst voor verwijdering
     function loadDrankjesToRemove() {
-        drankjesToRemove.innerHTML = ''; // Maak de lijst leeg
+        drankjesToRemove.innerHTML = '';
         const drankjes = JSON.parse(localStorage.getItem('drankjes')) || [];
-        drankjes.forEach(drink => {
-            if (drink.name && drink.amount !== undefined && drink.amount !== null) {
-                const li = document.createElement('li');
-                li.innerHTML = `
-                    ${drink.name} - €${parseFloat(drink.amount).toFixed(2)}
-                    <button onclick="promptForPincode('drankje', '${drink.name}')">Verwijder</button>
-                `;
-                drankjesToRemove.appendChild(li);
-            }
+        drankjes.forEach((drink, index) => {
+            const li = document.createElement('li');
+            li.innerHTML = `
+                ${drink.name} - €${parseFloat(drink.amount).toFixed(2)}
+                <button onclick="promptForPincode('drankje', '${drink.name}')">Verwijder</button>
+            `;
+            li.draggable = true;
+            li.dataset.index = index;
+
+            li.addEventListener('dragstart', handleDragStart);
+            li.addEventListener('dragover', handleDragOver);
+            li.addEventListener('drop', handleDrop);
+            li.addEventListener('dragend', handleDragEnd);
+
+            drankjesToRemove.appendChild(li);
         });
     }
 
-    // Initialiseer de lijsten voor verwijdering
+    function handleDragStart(e) {
+        e.dataTransfer.setData('text/plain', e.target.dataset.index);
+        e.target.classList.add('dragging');
+    }
+
+    function handleDragOver(e) {
+        e.preventDefault();
+        const draggingItem = document.querySelector('.dragging');
+        const listItems = [...drankjesToRemove.children];
+        const afterElement = listItems.find(item => e.clientY < item.getBoundingClientRect().bottom);
+        if (afterElement) {
+            drankjesToRemove.insertBefore(draggingItem, afterElement);
+        } else {
+            drankjesToRemove.appendChild(draggingItem);
+        }
+    }
+
+    function handleDrop(e) {
+        e.preventDefault();
+        const oldIndex = e.dataTransfer.getData('text/plain');
+        const newIndex = [...drankjesToRemove.children].indexOf(document.querySelector('.dragging'));
+
+        let drankjes = JSON.parse(localStorage.getItem('drankjes')) || [];
+        const [movedItem] = drankjes.splice(oldIndex, 1);
+        drankjes.splice(newIndex, 0, movedItem);
+
+        localStorage.setItem('drankjes', JSON.stringify(drankjes));
+        loadDrankjesToRemove();
+    }
+
+    function handleDragEnd() {
+        document.querySelectorAll('.dragging').forEach(el => el.classList.remove('dragging'));
+    }
+
     loadLedenToRemove();
     loadDrankjesToRemove();
 });
