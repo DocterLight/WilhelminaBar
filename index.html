@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wilhelmina Leens - BarLijst</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+    <div id="confirmationModal" class="modal">
+        <div class="modal-content">
+            <h2>Betaling bevestigen</h2>
+            <p>Weet je zeker dat je deze betaling wilt doorvoeren?</p>
+            <button id="confirmPayment">Ja, bevestigen</button>
+            <button id="closeModal">Annuleren</button>
+        </div>
+    </div>
+    
+    <div id="container">
+        <header>
+            <img width="200" height="100" src="https://i0.wp.com/wilhelminaleens.nl/wp-content/uploads/2023/12/logo-Wilhelmina.png?fit=1920%2C976&amp;ssl=1" alt="Wilhelmina Leens" id="headerLogo">
+            <button id="adminButton">Admin Paneel</button>
+        </header>
+        <main>
+            <section id="ledenLijst">
+                <h2>Ledenlijst</h2>
+                <ul id="ledenUl"></ul>
+                <div id="totaalBedrag"></div> 
+            </section>
+
+            <section id="drankjesLijst" style="display: none;">
+                <h2>Bar Lijst van <span id="currentMemberName"></span></h2>
+                <ul id="drankjesUl"></ul>
+                <div id="drankjesDetails"></div>
+                <button id="backToLeden">Terug naar Ledenlijst</button>
+                <button id="confirmOrder">Betaald</button>
+            </section>
+        </main>
+    </div>
+    
+    <script src="index.js"></script>
+</body>
+</html>

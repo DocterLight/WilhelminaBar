@@ -1,0 +1,403 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 50px;
+    padding: 0;
+    background-color: #5a8ed3;
+    background-image: url('https://wilhelminaleens.nl/wp-content/gallery/jubileumconcert-2017-85-jaar/Wilhelmina-Jubileumconcert-2017-152.jpg'); /* Pad naar je achtergrondafbeelding */
+    background-size: cover; /* Zorgt ervoor dat de afbeelding de hele achtergrond bedekt */
+    background-position: center;
+
+}
+
+#container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    margin: 0;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+main {
+    padding: 20px;
+}
+
+#ledenLijst {
+    margin-top: 20px;
+}
+
+#ledenUl {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#ledenUl li {
+    display: flex;
+    font-weight: bold;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px 0;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px; /* Ronde hoeken voor de lijstitems */
+    background-color: #fff; /* Witte achtergrondkleur */
+    color: #333; /* Donkere tekstkleur */
+    display: flex;
+    justify-content: space-between; /* Zorgt ervoor dat inhoud en knop aan weerszijden worden uitgelijnd */
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Lichte schaduw voor diepte-effect */
+}
+
+#ledenUl li:hover {
+    background-color: #f0f0f0; /* Optioneel: voeg een hover-effect toe */
+}
+
+#ledenUl li:last-child {
+    border-bottom: none;
+}
+
+#totaalBedrag {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* drankjes index.html */
+#drankjesLijst {
+    position: relative;
+    padding-bottom: 50px; /* Voor ruimte voor de bevestig-knop */
+}
+
+#drankjesUl {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#drankjesUl li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px 0;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px; /* Ronde hoeken voor de lijstitems */
+    background-color: #fff; /* Witte achtergrondkleur */
+    color: #333; /* Donkere tekstkleur */
+    display: flex;
+    justify-content: space-between; /* Zorgt ervoor dat inhoud en knop aan weerszijden worden uitgelijnd */
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Lichte schaduw voor diepte-effect */
+}
+
+#drankjesUl li:last-child {
+    border-bottom: none;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#drankjesLijst button {
+    margin-top: 10px;
+    
+}
+
+#drankjesDetails {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 0;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px; /* Ronde hoeken voor de lijstitems */
+    background-color: #fa7979; /* Witte achtergrondkleur */
+    color: #333; /* Donkere tekstkleur */
+    display: flex;
+    justify-content: space-between; /* Zorgt ervoor dat inhoud en knop aan weerszijden worden uitgelijnd */
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Lichte schaduw voor diepte-effect */
+}
+
+#drankjesDetails ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    
+}
+
+#drankjesDetails li {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+}
+
+#drankjesDetails li:last-child {
+    border-bottom: none;
+}
+
+#confirmOrder {
+    background-color: #00ad09;
+    font-weight: bold;
+    color: #fff;
+    border: none;
+    margin-left: 10px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+#confirmOrder:hover {
+    background-color: #0d5204;
+}
+
+#backToLeden {
+    background-color: #0088ff;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#backToLeden:hover {
+    background-color: #005ba1;
+}
+
+#paidButton {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+#paidButton:hover {
+    background-color: #c82333;
+}
+/* drankjes index.html */
+
+#adminPaneel {
+    padding-top: 20px;
+}
+
+form input {
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+form button {
+    padding: 10px 20px;
+    
+}
+
+/* Basisstijl voor de admin pagina */
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+    
+}
+
+h1 {
+    margin: 0;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+form input,
+form button {
+    margin: 5px;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    color: #fff;
+    background-color: #007bff;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#adminPaneel h2 {
+    margin-bottom: 10px;
+}
+
+/* Licht thema voor de ledenlijst */
+#ledenToRemove {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#ledenToRemove li {
+    margin: 5px 0;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px; /* Ronde hoeken voor de lijstitems */
+    background-color: #fff; /* Witte achtergrondkleur */
+    color: #333; /* Donkere tekstkleur */
+    display: flex;
+    justify-content: space-between; /* Zorgt ervoor dat inhoud en knop aan weerszijden worden uitgelijnd */
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Lichte schaduw voor diepte-effect */
+}
+
+#ledenToRemove li button {
+    background-color: #ff0000; /* Rode achtergrondkleur voor de knop */
+    border: none;
+    color: #fff;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px; /* Ronde hoeken voor de knop */
+    font-size: 0.9em; /* Kleinere tekst voor de knop */
+}
+
+#ledenToRemove li button:hover {
+    background-color: #b92929; /* Donkerder blauw bij hover */
+}
+#pincodeContainer {
+    margin-top: 20px;
+}
+
+#pincodeContainer input {
+    margin-right: 10px;
+}
+
+#drankjesToRemove {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#drankjesToRemove li {
+
+    margin: 5px 0;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px; /* Ronde hoeken voor de lijstitems */
+    background-color: #fff; /* Witte achtergrondkleur */
+    color: #333; /* Donkere tekstkleur */
+    display: flex;
+    justify-content: space-between; /* Zorgt ervoor dat inhoud en knop aan weerszijden worden uitgelijnd */
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Lichte schaduw voor diepte-effect */
+}
+
+.hidden {
+    display: none;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.modal.show {
+    display: block;
+    opacity: 1;
+}
+
+.modal.hide {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.modal-content {
+    background-color: rgba(255, 255, 255, 0.884);
+    padding: 20px;
+    margin: 15% auto;
+    width: 300px;
+    text-align: center;
+}
+
+button {
+    margin: 5px;
+}
+
+
+@media (max-width: 600px) {
+    body {
+        margin: 20px;
+    }
+
+    #container {
+        padding: 10px;
+    }
+
+    button {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+
+    #ledenUl li,
+    #drankjesUl li {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    #totaalBedrag,
+    #drankjesDetails {
+        font-size: 16px;
+    }
+}

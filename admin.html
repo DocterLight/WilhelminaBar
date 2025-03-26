@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Paneel</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="container">
+        <header>
+            <h1>Admin Paneel</h1>
+            <button id="backButton">Terug naar Ledenlijst</button>
+        </header>
+        <main>
+            <section id="adminPaneel">
+                <div class="form-section">
+                    <h2>Voeg lid toe</h2>
+                    <form id="addMemberForm">
+                        <input type="text" id="memberName" placeholder="Naam van lid" required>
+                        <button type="submit">Voeg lid toe</button>
+                    </form>
+                </div>
+                
+                <div class="form-section">
+                    <h2>Voeg drankje toe</h2>
+                    <form id="addDrinkForm">
+                        <input type="text" id="drinkName" placeholder="Naam van drankje" required>
+                        <input type="number" id="drinkAmount" placeholder="Kosten van drankje" step="0.01" required>
+                        <button type="submit">Voeg drankje toe</button>
+                    </form>
+                </div>
+
+                <div class="list-section">
+                    <h2>Verwijder lid</h2>
+                    <ul id="ledenToRemove"></ul>
+                </div>
+
+                <div class="list-section">
+                    <h2>Verwijder drankje</h2>
+                    <ul id="drankjesToRemove"></ul>
+                </div>
+
+                <div id="pincodeContainer" class="pincode-section" style="display:none;">
+                    <input type="password" id="pincodeInput" placeholder="Voer pincode in" required>
+                    <button id="confirmRemovalButton">Bevestiging</button>
+                </div>
+            </section>
+        </main>
+    </div>
+    <footer>
+        <p>&copy; 2024 Jouw Bedrijfsnaam. Alle rechten voorbehouden.</p>
+    </footer>
+    <script src="admin.js"></script>
+</body>
+</html>
