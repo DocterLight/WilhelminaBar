@@ -1,39 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    function calculateStatistics() {
-        const leden = JSON.parse(localStorage.getItem('leden')) || [];
-        const drankjes = JSON.parse(localStorage.getItem('drankjes')) || [];
-        
-        let historicalStats = JSON.parse(localStorage.getItem('historicalStats')) || {
-            totalSpent: 0,
-            memberStats: {},
-            drinkStats: {}
-        };
-
-        leden.forEach(member => {
-            if (member.totalAmount && member.totalAmount > 0) {
-                if (!historicalStats.memberStats[member.name]) {
-                    historicalStats.memberStats[member.name] = {
-                        totalSpent: 0,
-                        sessions: 0
-                    };
-                }
-
-                historicalStats.memberStats[member.name].totalSpent += member.totalAmount;
-                historicalStats.memberStats[member.name].sessions++;
-
-                historicalStats.totalSpent += member.totalAmount;
-
-                if (member.drinks) {
-                    member.drinks.forEach(drink => {
-                        historicalStats.drinkStats[drink.name] =
-                            (historicalStats.drinkStats[drink.name] || 0) + 1;
-                    });
-                }
-            }
-        });
-
-        localStorage.setItem('historicalStats', JSON.stringify(historicalStats));
-    }
     
     const ledenUl = document.getElementById('ledenUl');
     const totaalSpan = document.getElementById('totaalSpan');
@@ -180,7 +145,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     confirmPaymentButton.addEventListener('click', () => {
-        calculateStatistics(); // ✅ store the session stats before wiping them
         
         const leden = JSON.parse(localStorage.getItem('leden')) || [];
         const member = leden.find(m => m.name === currentMemberNameSpan.textContent);
