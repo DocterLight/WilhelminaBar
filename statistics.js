@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Totaal besteed bedrag (historisch)
         totalSpentAmountSpan.textContent = historicalStats.totalSpent.toFixed(2);
 
-        // Top leden naar bestedingen (historisch)
+        // Top spenders (historisch)
         const sortedMembers = Object.entries(historicalStats.memberStats)
             .sort((a, b) => b[1].totalSpent - a[1].totalSpent)
             .slice(0, 5);
