@@ -144,6 +144,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     confirmPaymentButton.addEventListener('click', () => {
+        calculateStatistics(); // ✅ store the session stats before wiping them
+        
         const leden = JSON.parse(localStorage.getItem('leden')) || [];
         const member = leden.find(m => m.name === currentMemberNameSpan.textContent);
 
