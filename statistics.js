@@ -19,8 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (isConfirmed) {
             // Verwijder alle gerelateerde localStorage items
-            localStorage.removeItem('leden');
-            localStorage.removeItem('drankjes');
             localStorage.removeItem('historicalStats');
 
             // Reset de weergegeven statistieken
