@@ -612,3 +612,51 @@ footer p {
         font-size: 16px;
     }
 }
+
+/* Statistics Page Styles */
+#statisticsSection {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.stats-card {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.stats-card h2 {
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    color: #007bff;
+}
+
+#topMemberslist, 
+#drinkSalesList {
+    list-style-type: decimal;
+    padding-left: 20px;
+}
+
+#topMemberslist li,
+#drinkSalesList li {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+#totalStats p {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+#totalStats span {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.header-buttons {
+    display: flex;
+    gap: 10px;
+}
