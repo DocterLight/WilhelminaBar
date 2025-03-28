@@ -191,6 +191,9 @@ button:hover {
 }
 
 #backToLeden {
+    position: absolute;
+    top: 20px;           
+    left: 20px;
     background-color: #0088ff;
     color: #fff;
     border: none;
@@ -200,6 +203,7 @@ button:hover {
     padding: 10px;
     border-radius: 4px;
     cursor: pointer;
+    z-index: 1000;
 }
 
 #backToLeden:hover {
