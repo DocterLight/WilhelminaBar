@@ -531,6 +531,8 @@ h2 {
     font-size: 28px; /* Vergroot de cijfers voor het totaalbedrag */
     color: #007bff; /* Kleur voor het bedrag zelf */
     font-weight: bold;
+    text-align: center; /* Centreer de tekst */
+    
 }
 
 /* Basisstijl voor de lijstitems */
