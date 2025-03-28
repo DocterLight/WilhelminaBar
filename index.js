@@ -113,7 +113,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Voeg het totaalbedrag toe aan het element met id 'totalAmount'
         const totalAmountElement = document.getElementById('totalAmount'); // Zorg ervoor dat dit element bestaat
         if (totalAmountElement) {
-            totalAmountElement.textContent = `Totaal Openstaand: €${totalAmount.toFixed(2)}`;
+            totalAmountElement.textContent = `Totaal Openstaand: 
+            €${totalAmount.toFixed(2)}`;
         }
     }
 
