@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
     const ledenUl = document.getElementById('ledenUl');
     const totaalSpan = document.getElementById('totaalSpan');
     const adminButton = document.getElementById('adminButton');
@@ -128,12 +127,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update member stats
         if (!historicalStats.memberStats[memberName]) {
             historicalStats.memberStats[memberName] = {
-                totalSpent: 0,
-                sessions: 0
+                totalSpent: 0
             };
         }
         historicalStats.memberStats[memberName].totalSpent += drinkAmount;
-        historicalStats.memberStats[memberName].sessions++;
 
         // Update total spent
         historicalStats.totalSpent += drinkAmount;
@@ -161,6 +158,8 @@ document.addEventListener('DOMContentLoaded', () => {
             leden[memberIndex] = member;
             localStorage.setItem('leden', JSON.stringify(leden));
 
+            updateHistoricalStats(member.name, drinkName, drinkAmount);
+
             sessionStorage.setItem('lastSelectedMember', currentMemberNameSpan.textContent);
             location.reload();
         }
@@ -175,14 +174,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const member = leden.find(m => m.name === currentMemberNameSpan.textContent);
 
         if (member) {
-            // ✅ Update historical stats only on payment
-            if (member.drinks && member.drinks.length > 0) {
-                member.drinks.forEach(drink => {
-                    updateHistoricalStats(member.name, drink.name, drink.amount);
-                });
-            }
-
-            // Clear member's drinks and total
             member.totalAmount = 0;
             member.drinks = [];
             localStorage.setItem('leden', JSON.stringify(leden));
