@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
         drankjesLijstSection.style.display = 'block';
         loadDrankjesList();
         loadDrankjesDetails(memberName);
-        displayTotalAmount(memberName);  // Toon het totaal bedrag voor het lid
+        displayTotalAmount(memberName);
     }
 
     function loadDrankjesDetails(memberName) {
@@ -112,11 +112,37 @@ document.addEventListener('DOMContentLoaded', () => {
             totalAmount = member.drinks.reduce((sum, drink) => sum + drink.amount, 0);
         }
 
-        // Voeg het totaalbedrag toe aan het element met id 'totalAmount'
-        const totalAmountElement = document.getElementById('totalAmount'); // Zorg ervoor dat dit element bestaat
+        const totalAmountElement = document.getElementById('totalAmount');
         if (totalAmountElement) {
             totalAmountElement.textContent = `Totaal Bedrag: €${totalAmount.toFixed(2)}`;
         }
+    }
+
+    function updateHistoricalStats(memberName, drinkName, drinkAmount) {
+        let historicalStats = JSON.parse(localStorage.getItem('historicalStats')) || {
+            totalSpent: 0,
+            memberStats: {},
+            drinkStats: {}
+        };
+
+        // Update member stats
+        if (!historicalStats.memberStats[memberName]) {
+            historicalStats.memberStats[memberName] = {
+                totalSpent: 0,
+                sessions: 0
+            };
+        }
+        historicalStats.memberStats[memberName].totalSpent += drinkAmount;
+        historicalStats.memberStats[memberName].sessions++;
+
+        // Update total spent
+        historicalStats.totalSpent += drinkAmount;
+
+        // Update drink stats
+        historicalStats.drinkStats[drinkName] = 
+            (historicalStats.drinkStats[drinkName] || 0) + 1;
+
+        localStorage.setItem('historicalStats', JSON.stringify(historicalStats));
     }
 
     window.addDrinkToBill = function(drinkName, drinkAmount) {
@@ -135,6 +161,9 @@ document.addEventListener('DOMContentLoaded', () => {
             leden[memberIndex] = member;
             localStorage.setItem('leden', JSON.stringify(leden));
 
+            // Add this line to update historical stats
+            updateHistoricalStats(member.name, drinkName, drinkAmount);
+
             sessionStorage.setItem('lastSelectedMember', currentMemberNameSpan.textContent);
             location.reload();
         }
@@ -145,7 +174,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     confirmPaymentButton.addEventListener('click', () => {
-        
         const leden = JSON.parse(localStorage.getItem('leden')) || [];
         const member = leden.find(m => m.name === currentMemberNameSpan.textContent);
 
@@ -192,5 +220,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     loadLedenList();
 });
-
 
