@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const ledenUl = document.getElementById('ledenUl');
     const totaalSpan = document.getElementById('totaalSpan');
     const adminButton = document.getElementById('adminButton');
+    const statisticsButton = document.getElementById('statisticsButton');
     const ledenLijstSection = document.getElementById('ledenLijst');
     const drankjesLijstSection = document.getElementById('drankjesLijst');
     const drankjesUl = document.getElementById('drankjesUl');
@@ -178,9 +179,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     backToLedenButton.addEventListener('click', showLedenLijst);
+
     adminButton.addEventListener('click', () => {
         window.location.href = 'admin.html';
     });
 
+    statisticsButton.addEventListener('click', () => {
+        window.location.href = 'statistics.html';
+    });
+
     loadLedenList();
 });
+
+
