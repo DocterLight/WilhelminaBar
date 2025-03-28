@@ -43,7 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Verzamel statistieken
     function calculateStatistics() {
         const leden = JSON.parse(localStorage.getItem('leden')) || [];
-        const drankjes = JSON.parse(localStorage.getItem('drankjes')) || [];
         
         // Haal historische statistieken op of initialiseer
         let historicalStats = JSON.parse(localStorage.getItem('historicalStats')) || {
@@ -51,36 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
             memberStats: {},
             drinkStats: {}
         };
-
-        // Verzamel statistieken voor elk lid
-        leden.forEach(member => {
-            if (member.totalAmount && member.totalAmount > 0) {
-                // Update historische statistieken
-                if (!historicalStats.memberStats[member.name]) {
-                    historicalStats.memberStats[member.name] = {
-                        totalSpent: 0,
-                        sessions: 0
-                    };
-                }
-                
-                historicalStats.memberStats[member.name].totalSpent += member.totalAmount;
-                historicalStats.memberStats[member.name].sessions++;
-                
-                // Update totale historische bestedingen
-                historicalStats.totalSpent += member.totalAmount;
-
-                // Bijhouden van drankjes in historische statistieken
-                if (member.drinks) {
-                    member.drinks.forEach(drink => {
-                        historicalStats.drinkStats[drink.name] = 
-                            (historicalStats.drinkStats[drink.name] || 0) + 1;
-                    });
-                }
-            }
-        });
-
-        // Sla historische statistieken op
-        localStorage.setItem('historicalStats', JSON.stringify(historicalStats));
 
         // Totaal aantal leden
         totalMembersSpan.textContent = leden.length;
