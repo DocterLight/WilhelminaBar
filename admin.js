@@ -27,6 +27,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 3000); // De popup verdwijnt na 3 seconden
     }
 
+    // Functie om pincode te valideren
+    function validatePincode() {
+        if (popupPincodeInput.value.trim() === CORRECT_PINCODE) {
+            if (currentType === 'lid') removeLid(currentName);
+            else if (currentType === 'drankje') removeDrink(currentName);
+            pincodePopup.classList.remove('visible');
+            showNotification(' Je hebt dit succesvol verwijderd! ');
+        } else {
+            showNotification('Onjuiste pincode. Probeer het opnieuw.');
+            popupPincodeInput.value = '';
+        }
+    }
+
     backButton.addEventListener('click', () => {
         window.location.href = 'index.html';
     });
@@ -72,17 +85,15 @@ document.addEventListener('DOMContentLoaded', () => {
         popupPincodeInput.focus();
     };
 
-    confirmPopupButton.addEventListener('click', () => {
-        if (popupPincodeInput.value.trim() === CORRECT_PINCODE) {
-            if (currentType === 'lid') removeLid(currentName);
-            else if (currentType === 'drankje') removeDrink(currentName);
-            pincodePopup.classList.remove('visible');
-            showNotification(' Je hebt dit succesvol verwijderd! ');
-        } else {
-            showNotification('Onjuiste pincode. Probeer het opnieuw.');
-            popupPincodeInput.value = '';
+    // Add event listener for Enter key in pincode input
+    popupPincodeInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault(); // Prevent form submission
+            validatePincode();
         }
     });
+
+    confirmPopupButton.addEventListener('click', validatePincode);
 
     cancelPopupButton.addEventListener('click', () => {
         pincodePopup.classList.remove('visible');
