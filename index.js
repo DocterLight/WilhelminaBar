@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-        function calculateStatistics() {
+    function calculateStatistics() {
         const leden = JSON.parse(localStorage.getItem('leden')) || [];
         const drankjes = JSON.parse(localStorage.getItem('drankjes')) || [];
         
