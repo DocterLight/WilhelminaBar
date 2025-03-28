@@ -20,7 +20,10 @@
     <div id="container">
         <header>
             <img width="200" height="100" src="https://i0.wp.com/wilhelminaleens.nl/wp-content/uploads/2023/12/logo-Wilhelmina.png?fit=1920%2C976&amp;ssl=1" alt="Wilhelmina Leens" id="headerLogo">
-            <button id="adminButton">Admin Paneel</button>
+            <div class="header-buttons">
+                <button id="adminButton">Admin Paneel</button>
+                <button id="statisticsButton">Statistieken</button>
+            </div>
         </header>
         <main>
             <section id="ledenLijst">
@@ -30,12 +33,12 @@
             </section>
 
             <section id="drankjesLijst" style="display: none;">
-                <button id="backToLeden">↩️Ledenlijst</button>
                 <h2>Bar Lijst van <span id="currentMemberName"></span></h2>
                 <ul id="drankjesUl"></ul>
                 <div id="drankjesDetails"></div>
                 <p id="totalAmount">Totaal: €0.00</p>
 
+                <button id="backToLeden">↩️Ledenlijst</button>
                 <button id="confirmOrder">Betaald</button>
             </section>
                 <!-- Footer toegevoegd -->
@@ -44,7 +47,7 @@
         <p>Ontwikkeld door Mark Steenhuis.</p>
     </footer>
         </main>
-    </div>s
+    </div>
     
     <script src="index.js"></script>
 </body>
