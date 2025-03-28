@@ -12,14 +12,18 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = 'index.html';
     });
 
-    // Reset alle statistieken
+    // Reset alleen statistieken
     resetAllButton.addEventListener('click', () => {
         // Toon bevestigingsvenster
-        const isConfirmed = confirm('Weet je zeker dat je ALLE statistieken wilt resetten? Dit kan NIET ongedaan worden gemaakt!');
+        const isConfirmed = confirm('Weet je zeker dat je alle statistieken wilt resetten? Dit kan NIET ongedaan worden gemaakt!');
         
         if (isConfirmed) {
-            // Verwijder alle gerelateerde localStorage items
-            localStorage.removeItem('historicalStats');
+            // Reset alleen de historische statistieken
+            localStorage.setItem('historicalStats', JSON.stringify({
+                totalSpent: 0,
+                memberStats: {},
+                drinkStats: {}
+            }));
 
             // Reset de weergegeven statistieken
             totalMembersSpan.textContent = '0';
@@ -27,6 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
             mostPopularDrinkSpan.textContent = 'Nog geen gegevens';
             topMembersList.innerHTML = '';
             drinkSalesList.innerHTML = '';
+
+            // Herbereken statistieken na reset
+            calculateStatistics();
 
             // Optionele melding
             alert('Alle statistieken zijn gereset.');
