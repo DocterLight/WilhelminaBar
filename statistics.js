@@ -63,8 +63,9 @@ document.addEventListener('DOMContentLoaded', () => {
             .slice(0, 5);
 
         topMembersList.innerHTML = sortedMembers.map(([name, stats]) => 
-            `<li>${name}: €${stats.totalSpent.toFixed(2)} (${stats.sessions} sessies)</li>`
-        ).join('');
+    `<li>${name}: €${stats.totalSpent.toFixed(2)}</li>`
+).join('');
+
 
         // Meest populaire drankje
         const sortedDrinks = Object.entries(historicalStats.drinkStats || {})
