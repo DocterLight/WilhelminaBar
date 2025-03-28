@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const backButton = document.getElementById('backButton');
+    const resetAllButton = document.getElementById('resetAllButton');
     const totalMembersSpan = document.getElementById('totalMembers');
     const totalSpentAmountSpan = document.getElementById('totalSpentAmount');
     const mostPopularDrinkSpan = document.getElementById('mostPopularDrink');
@@ -9,6 +10,29 @@ document.addEventListener('DOMContentLoaded', () => {
     // Terug naar ledenlijst
     backButton.addEventListener('click', () => {
         window.location.href = 'index.html';
+    });
+
+    // Reset alle statistieken
+    resetAllButton.addEventListener('click', () => {
+        // Toon bevestigingsvenster
+        const isConfirmed = confirm('Weet je zeker dat je ALLE statistieken wilt resetten? Dit kan NIET ongedaan worden gemaakt!');
+        
+        if (isConfirmed) {
+            // Verwijder alle gerelateerde localStorage items
+            localStorage.removeItem('leden');
+            localStorage.removeItem('drankjes');
+            localStorage.removeItem('historicalStats');
+
+            // Reset de weergegeven statistieken
+            totalMembersSpan.textContent = '0';
+            totalSpentAmountSpan.textContent = '0.00';
+            mostPopularDrinkSpan.textContent = 'Nog geen gegevens';
+            topMembersList.innerHTML = '';
+            drinkSalesList.innerHTML = '';
+
+            // Optionele melding
+            alert('Alle statistieken zijn gereset.');
+        }
     });
 
     // Verzamel statistieken
