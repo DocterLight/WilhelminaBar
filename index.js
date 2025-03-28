@@ -9,8 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const backToLedenButton = document.getElementById('backToLeden');
     const confirmOrderButton = document.getElementById('confirmOrder');
     const drankjesDetails = document.getElementById('drankjesDetails');
-
-    // ✅ Modal-elementen
     const confirmationModal = document.getElementById('confirmationModal');
     const confirmPaymentButton = document.getElementById('confirmPayment');
     const closeModalButton = document.getElementById('closeModal');
@@ -25,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         leden.forEach(member => {
             if (member.name) {
                 const li = document.createElement('li');
-                li.innerHTML = `
+                li.innerHTML = ` 
                     <span style="font-weight: bold;">${member.name}</span>
                     <span>€${parseFloat(member.totalAmount || 0).toFixed(2)}</span>
                 `;
@@ -69,6 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
         drankjesLijstSection.style.display = 'block';
         loadDrankjesList();
         loadDrankjesDetails(memberName);
+        displayTotalAmount(memberName);  // Toon het totaal bedrag voor het lid
     }
 
     function loadDrankjesDetails(memberName) {
@@ -77,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const member = leden.find(m => m.name === memberName);
 
         if (!member || !member.drinks || member.drinks.length === 0) {
-            drankjesDetails.innerHTML = '<li>Geen drankjes besteld</li>';
+            drankjesDetails.innerHTML = '<li>U heeft momenteel niks open staan!</li>';
             return;
         }
 
@@ -102,6 +101,22 @@ document.addEventListener('DOMContentLoaded', () => {
         drankjesDetails.appendChild(fragment);
     }
 
+    function displayTotalAmount(memberName) {
+        const leden = JSON.parse(localStorage.getItem('leden')) || [];
+        const member = leden.find(m => m.name === memberName);
+
+        let totalAmount = 0;
+        if (member && member.drinks) {
+            totalAmount = member.drinks.reduce((sum, drink) => sum + drink.amount, 0);
+        }
+
+        // Voeg het totaalbedrag toe aan het element met id 'totalAmount'
+        const totalAmountElement = document.getElementById('totalAmount'); // Zorg ervoor dat dit element bestaat
+        if (totalAmountElement) {
+            totalAmountElement.textContent = `Totaal Openstaand: €${totalAmount.toFixed(2)}`;
+        }
+    }
+
     window.addDrinkToBill = function(drinkName, drinkAmount) {
         let leden = JSON.parse(localStorage.getItem('leden')) || [];
         let memberIndex = leden.findIndex(m => m.name === currentMemberNameSpan.textContent);
@@ -123,37 +138,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-// ✅ Toon de bevestigingsmodal met fade-in effect
-confirmOrderButton.addEventListener('click', () => {
-    confirmationModal.classList.add('show');
-});
+    confirmOrderButton.addEventListener('click', () => {
+        confirmationModal.classList.add('show');
+    });
 
-// ✅ Verwerk de betaling na bevestiging en sluit met fade-out effect
-confirmPaymentButton.addEventListener('click', () => {
-    const leden = JSON.parse(localStorage.getItem('leden')) || [];
-    const member = leden.find(m => m.name === currentMemberNameSpan.textContent);
+    confirmPaymentButton.addEventListener('click', () => {
+        const leden = JSON.parse(localStorage.getItem('leden')) || [];
+        const member = leden.find(m => m.name === currentMemberNameSpan.textContent);
 
-    if (member) {
-        member.totalAmount = 0;
-        member.drinks = [];
-        localStorage.setItem('leden', JSON.stringify(leden));
-    }
+        if (member) {
+            member.totalAmount = 0;
+            member.drinks = [];
+            localStorage.setItem('leden', JSON.stringify(leden));
+        }
 
-    confirmationModal.classList.add('hide');
-    setTimeout(() => {
-        confirmationModal.classList.remove('show', 'hide');
-        location.reload();
-    }, 300);
-});
+        confirmationModal.classList.add('hide');
+        setTimeout(() => {
+            confirmationModal.classList.remove('show', 'hide');
+            location.reload();
+        }, 300);
+    });
 
-// ✅ Sluit de modal zonder te betalen met fade-out effect
-closeModalButton.addEventListener('click', () => {
-    confirmationModal.classList.add('hide');
-    setTimeout(() => {
-        confirmationModal.classList.remove('show', 'hide');
-    }, 300);
-});
-
+    closeModalButton.addEventListener('click', () => {
+        confirmationModal.classList.add('hide');
+        setTimeout(() => {
+            confirmationModal.classList.remove('show', 'hide');
+        }, 300);
+    });
 
     function showLedenLijst() {
         ledenLijstSection.style.display = 'block';
