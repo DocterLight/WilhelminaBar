@@ -161,9 +161,6 @@ document.addEventListener('DOMContentLoaded', () => {
             leden[memberIndex] = member;
             localStorage.setItem('leden', JSON.stringify(leden));
 
-            // Add this line to update historical stats
-            updateHistoricalStats(member.name, drinkName, drinkAmount);
-
             sessionStorage.setItem('lastSelectedMember', currentMemberNameSpan.textContent);
             location.reload();
         }
@@ -178,6 +175,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const member = leden.find(m => m.name === currentMemberNameSpan.textContent);
 
         if (member) {
+            // ✅ Update historical stats only on payment
+            if (member.drinks && member.drinks.length > 0) {
+                member.drinks.forEach(drink => {
+                    updateHistoricalStats(member.name, drink.name, drink.amount);
+                });
+            }
+
+            // Clear member's drinks and total
             member.totalAmount = 0;
             member.drinks = [];
             localStorage.setItem('leden', JSON.stringify(leden));
