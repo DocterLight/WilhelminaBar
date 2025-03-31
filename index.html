@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wilhelmina Leens - BarLijst</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/png" href="favicon.png">
 </head>
@@ -21,14 +20,11 @@
     <div id="container">
         <header>
             <img width="200" height="100" src="https://i0.wp.com/wilhelminaleens.nl/wp-content/uploads/2023/12/logo-Wilhelmina.png?fit=1920%2C976&amp;ssl=1" alt="Wilhelmina Leens" id="headerLogo">
-            <button href="javascript:void(0)" id="toggle-btn"><i class="fa-solid fa-bars"></i></button>
-            <nav class="nav" id="nav">
-                <button id="close-btn">&times; Sluiten</button>
-                <a href="statistics.html"><i class="fa-solid fa-coins"></i> Statistieken</a>
-                <a href="admin.html"><i class="fas fa-user-tie"></i> Admin Panel</a>
-              </nav>
+            <div class="header-buttons">
+                <button id="adminButton">Admin Paneel</button>
+                <button id="statisticsButton">Statistieken</button>
+            </div>
         </header>
-
         <main>
             <section id="ledenLijst">
                 <h2>Ledenlijst</h2>
@@ -45,16 +41,14 @@
 
                 <button id="confirmOrder">Betaald</button>
             </section>
-
-            <!-- Footer toegevoegd -->
-            <footer>
-                <p>&copy; 2025 Wilhelmina Leens. Alle rechten voorbehouden.</p>
-                <p>Ontwikkeld door Mark Steenhuis & Jurre Straatsma.</p>
-            </footer>
+                <!-- Footer toegevoegd -->
+    <footer>
+        <p>&copy; 2025 Wilhelmina Leens. Alle rechten voorbehouden.</p>
+        <p>Ontwikkeld door Mark Steenhuis & Jurre Straatsma.</p>
+    </footer>
         </main>
     </div>
     
     <script src="index.js"></script>
-    <script src="script.js"></script>
 </body>
 </html>
