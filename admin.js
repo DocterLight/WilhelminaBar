@@ -44,6 +44,11 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = 'index.html';
     });
 
+    statisticsButton.addEventListener('click', () => {
+        window.location.href = 'statistics.html';
+    });
+
+
     addMemberForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const memberName = memberNameInput.value.trim();

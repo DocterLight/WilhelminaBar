@@ -11,6 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
     backButton.addEventListener('click', () => {
         window.location.href = 'index.html';
     });
+    // Terug naar admin panel
+    adminButton.addEventListener('click', () => {
+        window.location.href = 'admin.html';
+    });
 
     // Reset alleen statistieken
     resetAllButton.addEventListener('click', () => {
