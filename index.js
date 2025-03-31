@@ -205,14 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     backToLedenButton.addEventListener('click', showLedenLijst);
-
-    adminButton.addEventListener('click', () => {
-        window.location.href = 'admin.html';
-    });
-
-    statisticsButton.addEventListener('click', () => {
-        window.location.href = 'statistics.html';
-    });
+    
 
     loadLedenList();
 });
