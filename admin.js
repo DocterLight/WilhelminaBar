@@ -168,7 +168,6 @@ document.addEventListener('DOMContentLoaded', () => {
             loadDrankjesToRemove();
         }
     }
-
     loadLedenToRemove();
     loadDrankjesToRemove();
 });

@@ -64,7 +64,6 @@ main {
 #ledenUl li {
     display: flex;
     font-weight: bold;
-    justify-content: space-between;
     align-items: center;
     margin: 5px 0;
     padding: 15px;
@@ -74,7 +73,6 @@ main {
     color: #333; /* Donkere tekstkleur */
     display: flex;
     justify-content: space-between; /* Zorgt ervoor dat inhoud en knop aan weerszijden worden uitgelijnd */
-    align-items: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Lichte schaduw voor diepte-effect */
 }
 
