@@ -7,8 +7,6 @@ body {
     background-image: url('https://wilhelminaleens.nl/wp-content/gallery/jubileumconcert-2017-85-jaar/Wilhelmina-Jubileumconcert-2017-152.jpg'); /* Pad naar je achtergrondafbeelding */
     background-size: cover; /* Zorgt ervoor dat de afbeelding de hele achtergrond bedekt */
     background-position: center;
-    width: 100vw;
-    height: 100vh;
 }
 
 #container {
@@ -20,6 +18,22 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+@media (max-width: 768px) {
+    .nav {
+      flex-direction: column;
+    }
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .content {
+    width: 80%; /* Neemt 80% van de beschikbare breedte in */
+    font-size: 1.2rem; /* Schaalbare lettergrootte */
+  }
+  
 header {
     display: flex;
     justify-content: space-between;
