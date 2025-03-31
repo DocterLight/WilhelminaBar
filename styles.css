@@ -17,24 +17,10 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
-@media (max-width: 768px) {
-    .nav {
-      flex-direction: column;
-    }
-  }
-
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-
-  .content {
-    width: 80%; /* Neemt 80% van de beschikbare breedte in */
-    font-size: 1.2rem; /* Schaalbare lettergrootte */
-  }
   
 header {
+    max-width: 100%;
+    overflow: hidden;
     display: flex;
     justify-content: space-between;
     align-items: center;
