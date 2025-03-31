@@ -12,13 +12,19 @@ body {
 
 #container {
     max-width: 750px;
+    width: 100%; /* Ensure the container is responsive */
     margin: 0 auto;
     padding: 20px;
     background: #ffffff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    
+    @media (max-width: 768px) {
+        .container {
+          max-width: 100%; /* Maximale breedte 100% voor telefoons */
+        }
+      }
 }
+
 
 header {
     display: flex;
