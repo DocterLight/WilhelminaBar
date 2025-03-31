@@ -12,12 +12,12 @@ body {
 
 #container {
     max-width: 750px;
+    width: 90%; /* Ensure the container is responsive */
     margin: 0 auto;
     padding: 20px;
     background: #ffffff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    
 }
 
 header {
@@ -700,8 +700,10 @@ footer p {
 
 /* Stijl voor de dropdown-knop */
 .dropdown {
-    position: relative;
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
   /* Verberg de dropdown-menu standaard */
@@ -715,7 +717,7 @@ footer p {
   z-index: 1;
   left: -50; /* Zorgt ervoor dat het menu netjes uitlijnt met de knop */
   max-width: 100%; /* Zorg ervoor dat het menu niet breder is dan de container */
-  overflow: hidden; /* Verberg overlopende inhoud */
+  overflow: auto; /* Verberg overlopende inhoud */
 }
 
 .dropdown:hover .dropdown-content {
