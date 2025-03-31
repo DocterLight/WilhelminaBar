@@ -21,14 +21,12 @@
     <div id="container">
         <header>
             <img width="200" height="100" src="https://i0.wp.com/wilhelminaleens.nl/wp-content/uploads/2023/12/logo-Wilhelmina.png?fit=1920%2C976&amp;ssl=1" alt="Wilhelmina Leens" id="headerLogo">
-                <div class="dropdown">
-                    <button class="dropdown"><i class="fas fa-bars"></i></button>
-                    <div class="dropdown-content">
-                        <a href="statistics.html">Statistics</a>
-                        <a href="admin.html">Admin Paneel</a>
-                        <a href="#">Over Ons</a>
-                    </div>
-                </div>
+            <button href="javascript:void(0)" id="toggle-btn"><i class="fa-solid fa-bars"></i></button>
+            <nav class="nav" id="nav">
+                <button id="close-btn">&times; Sluiten</button>
+                <a href="statistics.html"><i class="fa-solid fa-coins"></i> Statistieken</a>
+                <a href="admin.html"><i class="fas fa-user-tie"></i> Admin Panel</a>
+              </nav>
         </header>
 
         <main>
@@ -57,5 +55,6 @@
     </div>
     
     <script src="index.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
