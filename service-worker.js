@@ -9,9 +9,7 @@ const FILES_TO_CACHE = [
   './statistics.js',
   './admin.js',
   './favicon.png',
-  './manifest.json',
-  './icon-192.png',
-  './icon-512.png'
+  './manifest.json'
 ];
 
 // Installeer en cache bestanden
