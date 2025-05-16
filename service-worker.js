@@ -9,6 +9,7 @@ const FILES_TO_CACHE = [
   './statistics.js',
   './admin.js',
   './favicon.png',
+  './Config.json'
   './manifest.json'
 ];
 
