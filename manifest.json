@@ -1,0 +1,21 @@
+{
+    "name": "Wilhelmina Leens Bar Statistieken",
+    "short_name": "Wilhelmina Stats",
+    "start_url": "/statistics.html",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#0078d7",
+    "icons": [
+      {
+        "src": "favicon.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "favicon.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }
+  

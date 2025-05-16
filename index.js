@@ -1,4 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('service-worker.js')
+            .then(registration => {
+              console.log('Service Worker geregistreerd met scope:', registration.scope);
+            })
+            .catch(error => {
+              console.log('Service Worker registratie mislukt:', error);
+            });
+        });
+      }
+      
     const ledenUl = document.getElementById('ledenUl');
     const totaalSpan = document.getElementById('totaalSpan');
     const adminButton = document.getElementById('adminButton');
@@ -216,4 +228,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
     loadLedenList();
 });
-
