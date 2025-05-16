@@ -187,3 +187,27 @@ document.addEventListener('DOMContentLoaded', () => {
     loadLedenToRemove();
     loadDrankjesToRemove();
 });
+
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault(); // voorkom automatische prompt
+  deferredPrompt = e; // sla event op
+  // Toon bijvoorbeeld je eigen 'Install' knop hier
+  document.getElementById('installButton').style.display = 'flexbox';
+});
+
+document.getElementById('installButton').addEventListener('click', () => {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the install prompt');
+      } else {
+        console.log('User dismissed the install prompt');
+      }
+      deferredPrompt = null;
+      document.getElementById('installButton').style.display = 'flex';
+    });
+  }
+});
