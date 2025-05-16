@@ -96,14 +96,6 @@ main {
     font-weight: bold;
     margin-top: 20px;
 }
-#totalAmount {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-top: 1rem;
-    text-align: right;
-    padding: 0 1rem;
-    color: #333;
-}
 /* drankjes index.html */
 #drankjesLijst {
     position: relative;
@@ -527,7 +519,7 @@ h2 {
 }
 
 #totalAmount {
-    font-size: 24px; /* Vergroot de tekst om het totaalbedrag goed zichtbaar te maken */
+    font-size: 20px; /* Vergroot de tekst om het totaalbedrag goed zichtbaar te maken */
     font-weight: bold; /* Maak de tekst vet voor beter zichtbaarheid */
     color: #ffffff; /* Donkere kleur voor de tekst */
     background-color: #00ad09; /* Lichte achtergrondkleur voor contrast */
@@ -536,7 +528,6 @@ h2 {
     margin-top: 20px; /* Ruimte boven het totaalbedrag */
     text-align: center; /* Centreer de tekst */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Lichte schaduw voor diepte */
-    width: 100%;
     max-width: 350px; /* Maximaliseer de breedte voor grote schermen */
     margin-left: auto;
     margin-right: auto; /* Centreer het element horizontaal */
