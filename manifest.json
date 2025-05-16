@@ -1,7 +1,7 @@
 {
   "name": "Wilhelmina Leens Bar",
   "short_name": "Wilhelmina Bar",
-"start_url": "/WilhelminaBar/index.html",
+"start_url": "./index.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#0078d7",
