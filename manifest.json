@@ -1,7 +1,7 @@
 {
-    "name": "Wilhelmina Leens Bar Statistieken",
-    "short_name": "Wilhelmina Stats",
-    "start_url": "/statistics.html",
+    "name": "Wilhelmina Leens Bar",
+    "short_name": "Wilhelmina Bar",
+    "start_url": "./index.html",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#0078d7",
