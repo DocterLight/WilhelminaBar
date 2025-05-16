@@ -589,8 +589,8 @@ footer p {
     margin: 0;
     text-align: center;
     font-size: 14px;
+    align-items: center;
 }
-
 
 @media (max-width: 600px) {
     body {
