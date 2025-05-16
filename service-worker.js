@@ -11,6 +11,7 @@ const FILES_TO_CACHE = [
   './styles.css',
   './favicon.png',
   './manifest.json',
+  'https://wilhelminaleens.nl/wp-content/gallery/jubileumconcert-2017-85-jaar/Wilhelmina-Jubileumconcert-2017-152.jpg'
   'https://i0.wp.com/wilhelminaleens.nl/wp-content/uploads/2023/12/logo-Wilhelmina.png?fit=1920%2C976&ssl=1'
 ];
 
