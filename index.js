@@ -67,6 +67,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const button = li.querySelector('button');
                 button.addEventListener('click', () => addDrinkToBill(drink.name, drink.amount));
 
+                toonNotificatie(`${drinkName} toegevoegd aan ${currentMemberNameSpan.textContent}`);
+
                 fragment.appendChild(li);
             }
         });
