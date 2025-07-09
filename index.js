@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const confirmOrderButton = document.getElementById('confirmOrder');
     const drankjesDetails = document.getElementById('drankjesDetails');
     const confirmationModal = document.getElementById('confirmationModal');
+    const confirmation1Modal = document.getElementById('confirmation1Modal')
     const confirmPaymentButton = document.getElementById('confirmPayment');
     const closeModalButton = document.getElementById('closeModal');
 
@@ -166,6 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 member.drinks = [];
             }
             member.drinks.push({ name: drinkName, amount: drinkAmount });
+            showNotification('Je hebt een drankje of hapje toegevoegd!');
 
             leden[memberIndex] = member;
             localStorage.setItem('leden', JSON.stringify(leden));
