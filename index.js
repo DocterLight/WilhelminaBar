@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         popup.style.opacity = "0";
         setTimeout(() => popup.remove(), 500);
-    }, 2000);
+    }, 4000);
 }
     
     function loadLedenList() {
