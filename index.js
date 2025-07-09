@@ -27,6 +27,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const confirmPaymentButton = document.getElementById('confirmPayment');
     const closeModalButton = document.getElementById('closeModal');
 
+    function showNotification(message) {
+    const popup = document.createElement("div");
+    popup.textContent = message;
+    popup.style.position = "fixed";
+    popup.style.bottom = "20px";
+    popup.style.right = "20px";
+    popup.style.backgroundColor = "#4CAF50";
+    popup.style.color = "white";
+    popup.style.padding = "12px 20px";
+    popup.style.borderRadius = "12px";
+    popup.style.boxShadow = "0 4px 10px rgba(0,0,0,0.3)";
+    popup.style.zIndex = 9999;
+    popup.style.fontSize = "16px";
+    popup.style.transition = "opacity 0.5s";
+    document.body.appendChild(popup);
+
+    setTimeout(() => {
+        popup.style.opacity = "0";
+        setTimeout(() => popup.remove(), 500);
+    }, 2000);
+}
+
+    
     function loadLedenList() {
         const leden = JSON.parse(localStorage.getItem('leden')) || [];
         leden.sort((a, b) => a.name.localeCompare(b.name));
@@ -66,8 +89,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const button = li.querySelector('button');
                 button.addEventListener('click', () => addDrinkToBill(drink.name, drink.amount));
-
-                toonNotificatie(`${drinkName} toegevoegd aan ${currentMemberNameSpan.textContent}`);
 
                 fragment.appendChild(li);
             }
@@ -157,28 +178,36 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('historicalStats', JSON.stringify(historicalStats));
     }
 
-    window.addDrinkToBill = function(drinkName, drinkAmount) {
-        let leden = JSON.parse(localStorage.getItem('leden')) || [];
-        let memberIndex = leden.findIndex(m => m.name === currentMemberNameSpan.textContent);
+window.addDrinkToBill = function(drinkName, drinkAmount) {
+    let leden = JSON.parse(localStorage.getItem('leden')) || [];
+    let memberIndex = leden.findIndex(m => m.name === currentMemberNameSpan.textContent);
 
-        if (memberIndex !== -1) {
-            let member = leden[memberIndex];
+    if (memberIndex !== -1) {
+        let member = leden[memberIndex];
 
-            member.totalAmount = (member.totalAmount || 0) + drinkAmount;
-            if (!member.drinks) {
-                member.drinks = [];
-            }
-            member.drinks.push({ name: drinkName, amount: drinkAmount });
-
-            leden[memberIndex] = member;
-            localStorage.setItem('leden', JSON.stringify(leden));
-
-            updateHistoricalStats(member.name, drinkName, drinkAmount);
-
-            sessionStorage.setItem('lastSelectedMember', currentMemberNameSpan.textContent);
-            location.reload();
+        member.totalAmount = (member.totalAmount || 0) + drinkAmount;
+        if (!member.drinks) {
+            member.drinks = [];
         }
-    };
+        member.drinks.push({ name: drinkName, amount: drinkAmount });
+
+        leden[memberIndex] = member;
+        localStorage.setItem('leden', JSON.stringify(leden));
+
+        updateHistoricalStats(member.name, drinkName, drinkAmount);
+
+        // ✅ Hier is de notificatie:
+        showNotification(`+1 ${drinkName} toegevoegd aan rekening van ${member.name}`);
+
+        sessionStorage.setItem('lastSelectedMember', currentMemberNameSpan.textContent);
+
+        // Kleine delay voor effect
+        setTimeout(() => {
+            location.reload();
+        }, 500);
+    }
+};
+
 
     confirmOrderButton.addEventListener('click', () => {
         confirmationModal.classList.add('show');
