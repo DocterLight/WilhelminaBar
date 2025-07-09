@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function showNotification(message) {
     const popup = document.createElement("div");
     popup.textContent = message;
-    popup.style.position = "fixed";
+    popup.style.position = "relative";
     popup.style.bottom = "20px";
     popup.style.right = "20px";
     popup.style.backgroundColor = "#4CAF50";
