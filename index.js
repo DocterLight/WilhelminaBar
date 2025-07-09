@@ -66,6 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const button = li.querySelector('button');
                 button.addEventListener('click', () => addDrinkToBill(drink.name, drink.amount));
+                showNotification('Je hebt een drankje of hapje toegevoegd!');
 
                 fragment.appendChild(li);
             }
@@ -167,7 +168,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 member.drinks = [];
             }
             member.drinks.push({ name: drinkName, amount: drinkAmount });
-            showNotification('Je hebt een drankje of hapje toegevoegd!');
 
             leden[memberIndex] = member;
             localStorage.setItem('leden', JSON.stringify(leden));
