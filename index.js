@@ -30,17 +30,18 @@ document.addEventListener('DOMContentLoaded', () => {
     function showNotification(message) {
     const popup = document.createElement("div");
     popup.textContent = message;
-    popup.style.position = "relative";
-    popup.style.bottom = "20px";
-    popup.style.right = "20px";
+    popup.style.position = "fixed";
+    popup.style.top = "20px";
+    popup.style.left = "50%";
+    popup.style.transform = "translateX(-50%)";
     popup.style.backgroundColor = "#4CAF50";
     popup.style.color = "white";
-    popup.style.padding = "12px 20px";
+    popup.style.padding = "12px 24px";
     popup.style.borderRadius = "12px";
     popup.style.boxShadow = "0 4px 10px rgba(0,0,0,0.3)";
     popup.style.zIndex = 9999;
     popup.style.fontSize = "16px";
-    popup.style.transition = "opacity 0.5s";
+    popup.style.transition = "opacity 0.5s ease";
     document.body.appendChild(popup);
 
     setTimeout(() => {
