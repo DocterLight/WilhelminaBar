@@ -26,29 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const confirmation1Modal = document.getElementById('confirmation1Modal')
     const confirmPaymentButton = document.getElementById('confirmPayment');
     const closeModalButton = document.getElementById('closeModal');
-
-    function showNotification(message) {
-    const popup = document.createElement("div");
-    popup.textContent = message;
-    popup.style.position = "fixed";
-    popup.style.bottom = "20px";
-    popup.style.right = "20px";
-    popup.style.backgroundColor = "#4CAF50";
-    popup.style.color = "white";
-    popup.style.padding = "12px 20px";
-    popup.style.borderRadius = "12px";
-    popup.style.boxShadow = "0 4px 10px rgba(0,0,0,0.3)";
-    popup.style.zIndex = 9999;
-    popup.style.fontSize = "16px";
-    popup.style.transition = "opacity 0.5s";
-    document.body.appendChild(popup);
-
-    setTimeout(() => {
-        popup.style.opacity = "0";
-        setTimeout(() => popup.remove(), 500);
-    }, 2000);
-}
-
     
     function loadLedenList() {
         const leden = JSON.parse(localStorage.getItem('leden')) || [];
